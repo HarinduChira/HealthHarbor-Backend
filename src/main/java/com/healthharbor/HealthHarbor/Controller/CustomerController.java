@@ -35,7 +35,4 @@ public class CustomerController {
     public ResponseEntity<Optional<Customer>> getCusById(@PathVariable String cusId){
         return new ResponseEntity<Optional<Customer>>(customerService.singleCustomer(cusId),HttpStatus.OK);
     }
-
-
-
 }
