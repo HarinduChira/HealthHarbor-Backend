@@ -35,8 +35,14 @@ public class CusLoginService {
     }
 
     public List<CusLogin> getCusLogin() {
-
         return cusLoginRepository.findAll();
 
     }
+
+    public CusLogin addCus(CusLogin cusLogin) {
+        return cusLoginRepository.save(cusLogin);
+
+    }
+
+
 }

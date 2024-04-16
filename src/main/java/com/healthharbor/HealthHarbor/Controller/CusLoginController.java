@@ -1,7 +1,6 @@
 package com.healthharbor.HealthHarbor.Controller;
 
 import com.healthharbor.HealthHarbor.Collection.CusLogin;
-import com.healthharbor.HealthHarbor.Collection.Customer;
 import com.healthharbor.HealthHarbor.Service.CusLoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -30,6 +29,14 @@ public class CusLoginController {
     {
         return new ResponseEntity<List<CusLogin>>(cusLoginService.getCusLogin(), HttpStatus.OK);
     }
+
+    @PostMapping("/AddCus")
+    public ResponseEntity<CusLogin> cusSignUp(@RequestBody CusLogin cusLogin)
+    {
+        return new ResponseEntity<>(cusLoginService.addCus(cusLogin),HttpStatus.CREATED);
+    }
+
+
 
 
 }

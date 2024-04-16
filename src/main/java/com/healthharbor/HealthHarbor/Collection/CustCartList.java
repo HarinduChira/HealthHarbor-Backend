@@ -7,15 +7,20 @@ import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 
-@Document(collection = "CusLogin")
-public class CusLogin {
+@Document(collection = "CusCartList")
+public class CustCartList {
 
     private ObjectId id;
 
-    private String name;
-    private String email;
-    private String password;
+    private String cus_email;
+    private String product_id;
+    private String product_name;
+    private double price;
+    private String image_url;
+    private int quantity;
+    private String date;
+
 }
