@@ -12,6 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/ReqMedicine")
+@CrossOrigin("http://localhost:3000")
 public class ReqMedicineController {
 
     @Autowired

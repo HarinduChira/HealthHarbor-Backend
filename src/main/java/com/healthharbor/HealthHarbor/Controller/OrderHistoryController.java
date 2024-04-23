@@ -11,6 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/OrderHistory")
+@CrossOrigin("http://localhost:3000")
 public class OrderHistoryController {
 
     @Autowired
