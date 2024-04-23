@@ -22,5 +22,6 @@ public class CustCartList {
     private String image_url;
     private int quantity;
     private String date;
+    private String status;
 
 }
