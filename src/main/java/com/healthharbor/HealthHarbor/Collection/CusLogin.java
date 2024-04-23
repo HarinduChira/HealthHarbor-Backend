@@ -18,4 +18,6 @@ public class CusLogin {
     private String name;
     private String email;
     private String password;
+    private String address;
+    private String contactNo;
 }

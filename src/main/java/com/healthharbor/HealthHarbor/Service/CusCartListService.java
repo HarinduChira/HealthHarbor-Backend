@@ -1,6 +1,6 @@
 package com.healthharbor.HealthHarbor.Service;
 
-import com.healthharbor.HealthHarbor.Collection.CustCartList;
+import com.healthharbor.HealthHarbor.Collection.CusCartList;
 import com.healthharbor.HealthHarbor.Repository.CusCartListRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,11 +13,11 @@ public class CusCartListService {
     @Autowired
     private CusCartListRepository cusCartListRepository;
 
-    public CustCartList addCusCartList(CustCartList custCartList){
+    public CusCartList addCusCartList(CusCartList custCartList){
         return cusCartListRepository.save(custCartList);
     }
 
-    public List<CustCartList> getCusCartList(){
+    public List<CusCartList> getCusCartList(){
         return cusCartListRepository.findAll();
     }
 

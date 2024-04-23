@@ -11,7 +11,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @NoArgsConstructor
 
 @Document(collection = "CusCartList")
-public class CustCartList {
+public class CusCartList {
 
     private ObjectId id;
 

@@ -1,6 +1,6 @@
 package com.healthharbor.HealthHarbor.Controller;
 
-import com.healthharbor.HealthHarbor.Collection.CustCartList;
+import com.healthharbor.HealthHarbor.Collection.CusCartList;
 import com.healthharbor.HealthHarbor.Service.CusCartListService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -18,13 +18,13 @@ public class CusCartListController {
     private CusCartListService cusCartListService;
 
     @GetMapping
-    public ResponseEntity<List<CustCartList>> getAllCusCartList()
+    public ResponseEntity<List<CusCartList>> getAllCusCartList()
     {
-        return new ResponseEntity<List<CustCartList>>(cusCartListService.getCusCartList(), HttpStatus.OK);
+        return new ResponseEntity<List<CusCartList>>(cusCartListService.getCusCartList(), HttpStatus.OK);
     }
 
     @PostMapping("/addCusCartItem")
-    public ResponseEntity<CustCartList> addCusCartItem(@RequestBody CustCartList custCartList)
+    public ResponseEntity<CusCartList> addCusCartItem(@RequestBody CusCartList custCartList)
     {
         return new ResponseEntity<>(cusCartListService.addCusCartList(custCartList),HttpStatus.CREATED);
     }
