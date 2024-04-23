@@ -20,4 +20,9 @@ public class CusCartListService {
     public List<CustCartList> getCusCartList(){
         return cusCartListRepository.findAll();
     }
+
+    public void deleteItem(int productId) {
+
+        cusCartListRepository.deleteItemByID(productId);
+    }
 }

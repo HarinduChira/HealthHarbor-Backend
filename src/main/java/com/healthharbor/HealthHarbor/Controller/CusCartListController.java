@@ -29,4 +29,12 @@ public class CusCartListController {
         return new ResponseEntity<>(cusCartListService.addCusCartList(custCartList),HttpStatus.CREATED);
     }
 
+    @DeleteMapping("/{product_id}")
+    public ResponseEntity<Void> deleteItemFromCusCartList(@PathVariable int product_id)
+    {
+        cusCartListService.deleteItem(product_id);
+
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
 }
