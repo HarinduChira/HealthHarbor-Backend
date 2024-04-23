@@ -3,6 +3,7 @@ package com.healthharbor.HealthHarbor.Service;
 import com.healthharbor.HealthHarbor.Collection.CusLogin;
 import com.healthharbor.HealthHarbor.Repository.CusLoginRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,6 +14,9 @@ public class CusLoginService {
     @Autowired
     private CusLoginRepository cusLoginRepository;
 
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
     public Optional<String> getCusLoginDetails(String email,String password){
 
         Optional<CusLogin> userOptional = cusLoginRepository.findCusByEmail(email);
@@ -21,11 +25,9 @@ public class CusLoginService {
         {
             CusLogin cusLogin = userOptional.get();
 
-            if (cusLogin.getPassword().equals(password))
-            {
+            if (passwordEncoder.matches(password, cusLogin.getPassword())) {
                 return Optional.of("Login Success");
-            }
-            else {
+            } else {
                 return Optional.of("Invalid Password");
             }
         }else
@@ -40,7 +42,12 @@ public class CusLoginService {
     }
 
     public CusLogin addCus(CusLogin cusLogin) {
-        return cusLoginRepository.save(cusLogin);
+
+        CusLogin newCus = cusLogin;
+
+        newCus.setPassword(passwordEncoder.encode(newCus.getPassword()));
+
+        return cusLoginRepository.save(newCus);
 
     }
 
