@@ -37,4 +37,10 @@ public class CusCartListController {
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
+//    @PutMapping("/{product_id}")
+//    public ResponseEntity<Void> changeStatusToPending(@PathVariable("product_id") int productId) {
+//        cusCartListService.changeStatusToPending(productId);
+//        return new ResponseEntity<>(HttpStatus.OK);
+//    }
+
 }

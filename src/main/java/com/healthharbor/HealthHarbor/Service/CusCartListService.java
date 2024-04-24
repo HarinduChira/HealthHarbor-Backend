@@ -4,6 +4,7 @@ import com.healthharbor.HealthHarbor.Collection.CusCartList;
 import com.healthharbor.HealthHarbor.Repository.CusCartListRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -25,4 +26,13 @@ public class CusCartListService {
 
         cusCartListRepository.deleteItemByID(productId);
     }
+
+//    @Transactional
+//    public void changeStatusToPending(int productId) {
+//        CusCartList existing = cusCartListRepository.findByProductId(productId);
+//        if (existing != null) {
+//            existing.setStatus("Pending");
+//            cusCartListRepository.save(existing);
+//        }
+//    }
 }

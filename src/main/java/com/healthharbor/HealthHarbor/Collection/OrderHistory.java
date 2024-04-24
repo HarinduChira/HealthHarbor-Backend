@@ -16,7 +16,7 @@ public class OrderHistory {
     private ObjectId id;
 
     private String cus_email;
-    private String product_id;
+    private int product_id;
     private String name;
     private Double total_price;
     private String description;

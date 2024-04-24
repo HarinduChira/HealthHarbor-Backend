@@ -16,7 +16,7 @@ public class CusCartList {
     private ObjectId id;
 
     private String cus_email;
-    private String product_id;
+    private int product_id;
     private String product_name;
     private double price;
     private String image_url;
