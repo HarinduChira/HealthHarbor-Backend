@@ -11,20 +11,20 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/Customers")
+@RequestMapping("/api/Customer")
 @CrossOrigin("http://localhost:3000")
 public class CustomerController {
 
     @Autowired
     private CustomerService customerService;
 
-    @GetMapping
+    @GetMapping("/GetCus")
     public ResponseEntity<List<Customer>> getAllCustomers()
     {
         return new ResponseEntity<List<Customer>>(customerService.allCustomers(), HttpStatus.OK);
     }
 
-    @PostMapping
+    @PostMapping("/AddCus")
     public ResponseEntity<Customer> addCustomerToDb(@RequestBody Customer customer)
     {
         Customer newCustomer = customerService.addCustomer(customer);
@@ -32,8 +32,12 @@ public class CustomerController {
         return new ResponseEntity<>(newCustomer,HttpStatus.CREATED);
     }
 
-    @GetMapping("/{cusId}")
-    public ResponseEntity<Optional<Customer>> getCusById(@PathVariable String cusId){
-        return new ResponseEntity<Optional<Customer>>(customerService.singleCustomer(cusId),HttpStatus.OK);
+    @GetMapping("/Check/{email},{password}")
+    public ResponseEntity<Optional<String>> getCusByEmailPass(@PathVariable String email,@PathVariable String password)
+    {
+        return new ResponseEntity<Optional<String>>(customerService.checkCusLogin(email,password),HttpStatus.OK);
     }
+
+
+
 }
