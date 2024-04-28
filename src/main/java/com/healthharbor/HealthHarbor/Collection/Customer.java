@@ -19,7 +19,9 @@ public class Customer {
     private String name;
     private String email;
     private String password;
-    private String address;
+    private String addressNo;
+    private String addressStreet;
+    private String addressCity;
     private String contactNo;
 
 }

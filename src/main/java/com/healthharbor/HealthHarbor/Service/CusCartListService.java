@@ -4,9 +4,10 @@ import com.healthharbor.HealthHarbor.Collection.CusCartList;
 import com.healthharbor.HealthHarbor.Repository.CusCartListRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.Optional;
 
 @Service
 public class CusCartListService {
@@ -14,8 +15,8 @@ public class CusCartListService {
     @Autowired
     private CusCartListRepository cusCartListRepository;
 
-    public CusCartList addCusCartList(CusCartList custCartList){
-        return cusCartListRepository.save(custCartList);
+    public CusCartList addCusCartList(CusCartList cusCartList){
+        return cusCartListRepository.save(cusCartList);
     }
 
     public List<CusCartList> getCusCartList(){
@@ -27,12 +28,15 @@ public class CusCartListService {
         cusCartListRepository.deleteItemByID(productId);
     }
 
-//    @Transactional
-//    public void changeStatusToPending(int productId) {
-//        CusCartList existing = cusCartListRepository.findByProductId(productId);
-//        if (existing != null) {
-//            existing.setStatus("Pending");
-//            cusCartListRepository.save(existing);
-//        }
-//    }
+    public void updateStatus(int productId, String status) {
+        Optional<CusCartList> prevCusCartListOptional = cusCartListRepository.findByProductId(productId);
+        if (prevCusCartListOptional.isPresent()) {
+            CusCartList prevCusCartList = prevCusCartListOptional.get();
+            prevCusCartList.setStatus(status);
+            cusCartListRepository.save(prevCusCartList);
+        } else {
+            throw new NoSuchElementException("Product not found"); // Throw exception if product not found
+        }
+    }
+
 }

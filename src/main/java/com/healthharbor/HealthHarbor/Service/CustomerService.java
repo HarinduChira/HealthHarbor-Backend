@@ -50,4 +50,49 @@ public class CustomerService {
             return Optional.of("Customer Not Found");
         }
     }
+
+    public Optional<Customer> getCustomerByEmail(String email) {
+
+        return customerRepository.findCustomerByEmail(email);
+    }
+
+    public void updateCustomerDetails(String prevEmail, String name, String email, String contactNo, String addressNo, String addressStreet, String addressCity) {
+
+        Optional<Customer> prevCusOptional = customerRepository.findCustomerByEmail(prevEmail);
+        if (prevCusOptional.isPresent()) {
+            Customer prevCus = prevCusOptional.get();
+            if (name != null) {
+                prevCus.setName(name);
+            }
+            if (email != null) {
+                prevCus.setEmail(email);
+            }
+            if (contactNo != null) {
+                prevCus.setContactNo(contactNo);
+            }
+            if (addressNo != null) {
+                prevCus.setAddressNo(addressNo);
+            }
+            if (addressStreet != null) {
+                prevCus.setAddressStreet(addressStreet);
+            }
+            if (addressCity != null) {
+                prevCus.setAddressCity(addressCity);
+            }
+            customerRepository.save(prevCus);
+        }
+    }
+
+    public void updatePassword(String prevEmail, String password) {
+
+        Optional<Customer> prevCusOptional = customerRepository.findCustomerByEmail(prevEmail);
+
+        if (prevCusOptional.isPresent()) {
+            Customer prevCus = prevCusOptional.get();
+
+            prevCus.setPassword(passwordEncoder.encode(password));
+
+            customerRepository.save(prevCus);
+        }
+    }
 }

@@ -16,6 +16,7 @@ import java.util.List;
 public class Products {
 
     private ObjectId id;
+
     private String product_id;
     private String name;
     private String category;
@@ -23,8 +24,7 @@ public class Products {
     private String description;
     private String image_url;
     private int stock;
-    private String supplier_id;
-    private String pharmacy_id;
+    private String status;
     private List<Review> reviews;
 }
 

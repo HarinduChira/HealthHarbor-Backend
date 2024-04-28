@@ -39,5 +39,30 @@ public class CustomerController {
     }
 
 
+    @GetMapping("/GetByEmail/{email}")
+    public ResponseEntity<Optional<Customer>> getCusByEmail(@PathVariable String email)
+    {
+        return new ResponseEntity<Optional<Customer>>(customerService.getCustomerByEmail(email),HttpStatus.OK);
+    }
+
+    @PutMapping("/UpdateCusDetails/{prevEmail},{name},{email},{contactNo},{addressNo},{addressStreet},{addressCity}")
+    public void updateCustomerDetails(
+            @PathVariable String prevEmail,
+            @PathVariable String name,
+            @PathVariable String email,
+            @PathVariable String contactNo,
+            @PathVariable String addressNo,
+            @PathVariable String addressStreet,
+            @PathVariable String addressCity) {
+        customerService.updateCustomerDetails(prevEmail, name, email, contactNo, addressNo,addressStreet,addressCity);
+    }
+
+    @PutMapping("/UpdatePassword/{prevEmail},{password}")
+    public void UpdatePassword(@PathVariable String prevEmail,@PathVariable String password)
+    {
+        customerService.updatePassword(prevEmail,password);
+    }
+
+
 
 }

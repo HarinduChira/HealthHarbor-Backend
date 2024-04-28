@@ -16,12 +16,11 @@ public class CusCartList {
     private ObjectId id;
 
     private String cus_email;
-    private int product_id;
+    private int productId;
     private String product_name;
     private double price;
     private String image_url;
     private int quantity;
     private String date;
     private String status;
-
 }
